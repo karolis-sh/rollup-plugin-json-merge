@@ -1,19 +1,23 @@
 {
-  "name": "template-javascript",
+  "name": "rollup-plugin-json-merge",
   "version": "0.0.0",
-  "private": true,
-  "keywords": [],
-  "repository": "git@github.com:karolis-sh/template-javascript.git",
+  "keywords": [
+    "rollup",
+    "plugin",
+    "json",
+    "merge"
+  ],
+  "repository": "git@github.com:karolis-sh/rollup-plugin-json-merge.git",
   "license": "MIT",
   "author": "Karolis Šarapnickis",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "commit": "npx cz",
     "format": "run-p format:*",
     "format:package.json": "sort-package-json package.json",
     "format:prettier": "prettier --write '**/*.*'",
     "lint": "run-p lint:*",
-    "lint:js": "eslint .",
+    "lint:js": "eslint . --cache",
     "lint:md": "markdownlint-cli2 '**/*.md' '!node_modules' '!**/node_modules'",
     "qa": "run-p lint",
     "release": "yarn && run-s qa && standard-version --no-verify && git push --follow-tags --no-verify && npm publish",
@@ -27,6 +31,10 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "fs-extra": "^10.0.0",
+    "glob": "^7.1.7"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
