@@ -1,7 +1,7 @@
 # rollup-plugin-json-merge
 
 [![npm version][package-version-badge]][package-version]
-![Node.js CI](https://github.com/karolis-sh/rollup-plugin-json-merge/workflows/Node.js%20CI/badge.svg)
+[![Node.js CI](https://github.com/karolis-sh/rollup-plugin-json-merge/actions/workflows/node.js.yml/badge.svg)](https://github.com/karolis-sh/rollup-plugin-json-merge/actions/workflows/node.js.yml)
 [![License: MIT](https://img.shields.io/badge/license-mit-yellow.svg)](https://opensource.org/licenses/MIT)
 
 🍣 A Rollup plugin to merge multiple JSON inputs into one.
@@ -66,6 +66,10 @@ Type: `String`<br>
 Default: `output.json`
 
 Output filename for the merged JSON.
+
+## License
+
+[MIT](/LICENSE)
 
 [package-version-badge]: https://badge.fury.io/js/rollup-plugin-json-merge.svg
 [package-version]: https://www.npmjs.com/package/rollup-plugin-json-merge
