@@ -52,5 +52,9 @@
     "rollup": "^2.52.8",
     "sort-package-json": "^1.50.0",
     "standard-version": "^9.3.0"
+  },
+  "volta": {
+    "node": "14.17.3",
+    "yarn": "1.22.10"
   }
 }
