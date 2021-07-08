@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-json-merge",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Rollup plugin to merge multiple JSON sources into one",
   "keywords": [
     "rollup",
