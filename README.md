@@ -67,6 +67,13 @@ Default: `output.json`
 
 Output filename for the merged JSON.
 
+### `merge`
+
+Type: `Function`<br>
+Default: `(items) => Object.assign(...items)`
+
+The function responsible for merging given items.
+
 ## License
 
 [MIT](/LICENSE)

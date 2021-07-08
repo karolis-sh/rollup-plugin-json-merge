@@ -1,15 +1,15 @@
 const path = require('path');
 const { rollup } = require('rollup');
 
-const merge = require('../lib');
+const mergePlugin = require('../lib');
 
 const FIXTURES_DIR = path.join(__dirname, 'fixtures');
 
-async function build({ input }) {
+async function build({ input, merge }) {
   const fileName = 'test.json';
   const bundle = await rollup({
     input: path.join(FIXTURES_DIR, 'index.js'),
-    plugins: [merge({ fileName, input })],
+    plugins: [mergePlugin({ fileName, input, merge })],
   });
   const { output } = await bundle.generate({});
   return output.find((item) => item.fileName === fileName);
@@ -49,5 +49,31 @@ it('should handle multiple sources', async () => {
       version: '1.0.0',
       description: 'Lets merge stuff!',
     })
+  );
+});
+
+it('should use custom merger', async () => {
+  const output = await build({
+    input: [
+      { name: 'Karolis' },
+      { surname: 'Šarapnickis' },
+      path.join(FIXTURES_DIR, 'manifest-{a,b}.json'),
+    ],
+    merge: (items) => items,
+  });
+
+  expect(output.source).toEqual(
+    format([
+      { name: 'Karolis' },
+      { surname: 'Šarapnickis' },
+      {
+        name: 'Go A',
+        version: '1.0.0',
+      },
+      {
+        name: 'Go B',
+        description: 'Lets merge stuff!',
+      },
+    ])
   );
 });
