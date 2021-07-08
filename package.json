@@ -1,6 +1,7 @@
 {
   "name": "rollup-plugin-json-merge",
   "version": "0.0.1",
+  "description": "A Rollup plugin to merge multiple JSON sources into one",
   "keywords": [
     "rollup",
     "plugin",
@@ -20,7 +21,7 @@
     "lint:js": "eslint . --cache",
     "lint:md": "markdownlint-cli2 '**/*.md' '!node_modules' '!**/node_modules' '!**/CHANGELOG.md'",
     "qa": "run-p lint",
-    "release": "yarn && run-s qa && standard-version --no-verify && git push --follow-tags --no-verify && npm publish",
+    "release": "yarn && yarn qa && standard-version --no-verify && git push --follow-tags --no-verify && npm publish",
     "prepare": "husky install"
   },
   "lint-staged": {
