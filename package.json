@@ -17,10 +17,11 @@
     "format": "run-p format:*",
     "format:package.json": "sort-package-json package.json",
     "format:prettier": "prettier --write '**/*.*'",
+    "test": "jest",
     "lint": "run-p lint:*",
     "lint:js": "eslint . --cache",
     "lint:md": "markdownlint-cli2 '**/*.md' '!node_modules' '!**/node_modules' '!**/CHANGELOG.md'",
-    "qa": "run-p lint",
+    "qa": "run-p lint test",
     "release": "yarn && yarn qa && standard-version --no-verify && git push --follow-tags --no-verify && npm publish",
     "prepare": "husky install"
   },
@@ -43,10 +44,12 @@
     "@k.sh/eslint-config": "^1.21.0",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^6.0.0",
+    "jest": "^27.0.6",
     "lint-staged": ">=10",
     "markdownlint-cli2": "^0.1.3",
     "npm-run-all": "^4.1.5",
     "pretty-quick": "^3.1.0",
+    "rollup": "^2.52.8",
     "sort-package-json": "^1.50.0",
     "standard-version": "^9.3.0"
   }
