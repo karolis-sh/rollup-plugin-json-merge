@@ -4,7 +4,7 @@
 [![Node.js CI](https://github.com/karolis-sh/rollup-plugin-json-merge/actions/workflows/node.js.yml/badge.svg)](https://github.com/karolis-sh/rollup-plugin-json-merge/actions/workflows/node.js.yml)
 [![License: MIT](https://img.shields.io/badge/license-mit-yellow.svg)](https://opensource.org/licenses/MIT)
 
-🍣 A Rollup plugin to merge multiple JSON inputs into one.
+🍣 A Rollup plugin to merge multiple JSON sources into one.
 
 ## Install
 
@@ -66,6 +66,13 @@ Type: `String`<br>
 Default: `output.json`
 
 Output filename for the merged JSON.
+
+### `merge`
+
+Type: `Function`<br>
+Default: `(items) => Object.assign(...items)`
+
+The function responsible for merging given items.
 
 ## License
 
