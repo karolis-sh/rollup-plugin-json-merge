@@ -9,11 +9,29 @@ async function build({ input }) {
   const fileName = 'test.json';
   const bundle = await rollup({
     input: path.join(FIXTURES_DIR, 'index.js'),
-    plugins: [merge({ input, fileName })],
+    plugins: [merge({ fileName, input })],
   });
   const { output } = await bundle.generate({});
   return output.find((item) => item.fileName === fileName);
 }
+
+const format = (value) => JSON.stringify(value, null, 2);
+
+it('should handle no sources', async () => {
+  const output = await build({
+    input: [],
+  });
+
+  expect(output).toBeUndefined();
+});
+
+it('should handle null source', async () => {
+  const output = await build({
+    input: [path.join(FIXTURES_DIR, 'null.json')],
+  });
+
+  expect(output).toBeUndefined();
+});
 
 it('should handle multiple sources', async () => {
   const output = await build({
@@ -25,15 +43,11 @@ it('should handle multiple sources', async () => {
   });
 
   expect(output.source).toEqual(
-    JSON.stringify(
-      {
-        name: 'Go B',
-        surname: 'Šarapnickis',
-        version: '1.0.0',
-        description: 'Lets merge stuff!',
-      },
-      null,
-      2
-    )
+    format({
+      name: 'Go B',
+      surname: 'Šarapnickis',
+      version: '1.0.0',
+      description: 'Lets merge stuff!',
+    })
   );
 });
